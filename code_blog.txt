@@ -1,0 +1,8 @@
+Este proyecto es un blog con el que quiero seguir practicando mi habilidades en programacion. He estado parado mucho tiempo
+en este aspecto, asi que voy a ponerme a hacer algo al respecto.
+
+La idea es muy baga todavía, no tengo muy claro cual va a ser el contenido de este proyecto pero empezaremos poco a poco
+para dar forma a algo.
+
+Ideas para el proyecto:
+- Una parte quiero que sea un blog, es decir tener la opcion de añadir entradas aun no se sobre que lo voy a hacer
