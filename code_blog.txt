@@ -6,3 +6,5 @@ para dar forma a algo.
 
 Ideas para el proyecto:
 - Una parte quiero que sea un blog, es decir tener la opcion de añadir entradas aun no se sobre que lo voy a hacer
+- Tiene que contener una opcion para yo poder acceder y publicar cosas
+- Tengo que mirar como se hizo la conexion con supabase
