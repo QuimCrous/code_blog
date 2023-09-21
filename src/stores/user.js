@@ -7,32 +7,32 @@ export const useUserStore = defineStore("user", {
   state: () => ({
     user: null,
     profile: null,
-    avatarPath: null
+    avatarPath: null,
   }),
   actions: {
     async fetchUser() {
       const user = await supabase.auth.getUser();
-      
+
       if (user) {
         this.user = user;
-        if (this.user.data.user !== null){        
-        const userId = this.user.data.user.id;
-        const { data: profile } = await supabase
-          .from("profiles")
-          .select()
-          .match({ user_id: userId });
-        
-        if (profile) {
-          this.profile = profile[0];
-          /*const { data, error } = await supabase.storage
+        if (this.user.data.user !== null) {
+          const userId = this.user.data.user.id;
+          const { data: profile } = await supabase
+            .from("profiles")
+            .select()
+            .match({ user_id: userId });
+
+          if (profile) {
+            this.profile = profile[0];
+            /*const { data, error } = await supabase.storage
             .from("avatars")
             .download(this.profile.image_src);
           if (data) this.avatarPath = URL.createObjectURL(data);*/
-        }
+          }
 
-        console.log("user in store: ", this.user);
-        console.log("profile in store: ", this.profile);
-      }
+          console.log("user in store: ", this.user);
+          console.log("profile in store: ", this.profile);
+        }
       }
     },
 
@@ -42,20 +42,16 @@ export const useUserStore = defineStore("user", {
         password: password,
       });
       console.log("user: ", response.data.user.id);
-      
-      
-        /*this.user = user;*/
-        console.log("patata");
 
-        const { data: profile } = await supabase.from("profiles").insert([
-          {
-            user_id: response.data.user.id,
-            username: email,
-          },
-        ]);
+      const { data: profile } = await supabase.from("profiles").insert([
+        {
+          user_id: response.data.user.id,
+          username: email,
+          role: "user",
+        },
+      ]);
 
-        console.log("PERFIL: ", profile);
-      
+      console.log("PERFIL: ", profile);
     },
 
     async signIn(email, password) {
@@ -68,7 +64,7 @@ export const useUserStore = defineStore("user", {
           shouldCreateUser: false,
         }
       );
-      
+
       if (error) throw error;
       if (user) {
         this.user = user;
@@ -85,12 +81,10 @@ export const useUserStore = defineStore("user", {
 
     async signOut() {
       const { error } = await supabase.auth.signOut();
-      
+
       if (error) {
         throw error;
-        
       }
-
     },
 
     async modifyProfile(newName, newWebsite, newNickName, newAvatarUrl) {
