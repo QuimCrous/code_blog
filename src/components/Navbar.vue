@@ -5,7 +5,7 @@
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
     
     <RouterLink to="/" class="flex items-center">
-        <img src="https://flowbite.com/docs/images/logo.svg" class="h-8 mr-3" alt="Flowbite Logo" />
+        <img src="../../public/img/emot11.png" class="h-8 mr-3" alt="Flowbite Logo" />
         <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Friky Blog</span>
     </RouterLink>
     <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
@@ -31,8 +31,14 @@
         <li>
           <a href="#" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact</a>
         </li>
-        <li>
-          <RouterLink to="/auth/login" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Sign In</RouterLink>
+        <li v-if="username === ''">
+          <RouterLink to="/auth/login" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Iniciar sesión</RouterLink>
+        </li>
+        <li v-if="username === ''">
+          <RouterLink to="/auth/signup" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Registrarse</RouterLink>
+        </li>
+        <li v-else>
+          <button @click="signOut()" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Finalizar sesión</button>
         </li>
       </ul>
     </div>
@@ -44,6 +50,47 @@
 
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
+import { supabase } from "../supabase";
+import { onMounted, ref, toRefs } from "vue";
+import { useUserStore } from "../stores/user";
+import { useRouter } from "vue-router";
+
+const userStore = useUserStore();
+
+const loadedValue = ref(false);
+const username = ref("null");
+const website = ref(null);
+const avatar_url = ref(null);
+const name = ref(null);
+const nick_name = ref(null);
+const redirect = useRouter();
+
+onMounted(() => {
+  getUser();
+})
+
+async function getUser() {
+  await userStore.fetchUser();
+  try {
+    username.value = userStore.user.data.user.email;
+  } catch (error) {
+    username.value = ""
+  }  
+  console.log("papapapo", username.value);
+}
+
+const signOut = async () => {
+  try {
+    // call the user store and send the users info to backend to signOut
+    // then redirect user to the homeView
+    await userStore.signOut();
+    
+    redirect.push({ path: "/auth/login" });
+  } catch (error) {
+    console.log(error);
+  }
+
+};
 
 </script>
 

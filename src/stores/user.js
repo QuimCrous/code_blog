@@ -7,52 +7,59 @@ export const useUserStore = defineStore("user", {
   state: () => ({
     user: null,
     profile: null,
-    avatarPath: null,
+    avatarPath: null
   }),
   actions: {
     async fetchUser() {
-      const user = await supabase.auth.user();
+      const user = await supabase.auth.getUser();
+      
       if (user) {
         this.user = user;
+        if (this.user.data.user !== null){        
+        const userId = this.user.data.user.id;
         const { data: profile } = await supabase
           .from("profiles")
           .select()
-          .match({ user_id: this.user.id });
-
+          .match({ user_id: userId });
+        
         if (profile) {
           this.profile = profile[0];
-          const { data, error } = await supabase.storage
+          /*const { data, error } = await supabase.storage
             .from("avatars")
             .download(this.profile.image_src);
-          if (data) this.avatarPath = URL.createObjectURL(data);
+          if (data) this.avatarPath = URL.createObjectURL(data);*/
         }
 
         console.log("user in store: ", this.user);
         console.log("profile in store: ", this.profile);
       }
-    },
-
-    async signUp(email, password) {
-      const { user, error } = await supabase.auth.signUp({
-        email: email,
-        password: password,
-      });
-      if (error) throw error;
-      if (user) {
-        this.user = user;
-        console.log(this.user);
-
-        const { data: profile } = await supabase.from("profiles").insert([
-          {
-            user_id: this.user.id,
-            username: email,
-          },
-        ]);
       }
     },
 
+    async signUp(email, password) {
+      const response = await supabase.auth.signUp({
+        email: email,
+        password: password,
+      });
+      console.log("user: ", response.data.user.id);
+      
+      
+        /*this.user = user;*/
+        console.log("patata");
+
+        const { data: profile } = await supabase.from("profiles").insert([
+          {
+            user_id: response.data.user.id,
+            username: email,
+          },
+        ]);
+
+        console.log("PERFIL: ", profile);
+      
+    },
+
     async signIn(email, password) {
-      const { user, error } = await supabase.auth.signIn(
+      const { user, error } = await supabase.auth.signInWithPassword(
         {
           email: email,
           password: password,
@@ -61,6 +68,7 @@ export const useUserStore = defineStore("user", {
           shouldCreateUser: false,
         }
       );
+      
       if (error) throw error;
       if (user) {
         this.user = user;
@@ -77,7 +85,12 @@ export const useUserStore = defineStore("user", {
 
     async signOut() {
       const { error } = await supabase.auth.signOut();
-      if (error) throw error;
+      
+      if (error) {
+        throw error;
+        
+      }
+
     },
 
     async modifyProfile(newName, newWebsite, newNickName, newAvatarUrl) {
