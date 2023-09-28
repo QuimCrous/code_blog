@@ -8,7 +8,7 @@
           <img
             src="../../public/img/emot11.png"
             class="h-8 mr-3"
-            alt="Flowbite Logo"
+            alt="FrikyBlog Logo"
           />
           <span
             class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"
@@ -16,6 +16,7 @@
           >
         </RouterLink>
         <button
+          @click="showMenu()"
           data-collapse-toggle="navbar-default"
           type="button"
           class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
@@ -39,23 +40,23 @@
             />
           </svg>
         </button>
-        <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+        <div :class="navClass" id="navbar-default">
           <ul
-            class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
+            class="font-medium flex flex-col p-4 md:p-0 mt-4 md:flex-row md:space-x-8 md:mt-0 md:border-0"
           >
             <li>
-              <RouterLink
-                to="/"
-                class="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500"
-                aria-current="page"
-                >Home</RouterLink
+              <p
+                class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
               >
+                Hola {{ username === "" ? "Invitado" : username }}!
+              </p>
             </li>
             <li>
               <RouterLink
-                to="/about"
+                to="/"
                 class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-                >About</RouterLink
+                aria-current="page"
+                >Home</RouterLink
               >
             </li>
             <li v-if="role === 'admin'">
@@ -69,14 +70,7 @@
               <a
                 href="#"
                 class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-                >Pricing</a
-              >
-            </li>
-            <li>
-              <a
-                href="#"
-                class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-                >Contact</a
+                >Perfil</a
               >
             </li>
             <li v-if="username === ''">
@@ -101,6 +95,13 @@
                 Finalizar sesión
               </button>
             </li>
+            <li>
+              <RouterLink
+                to="/about"
+                class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                >Sobre FrikyBlog</RouterLink
+              >
+            </li>
           </ul>
         </div>
       </div>
@@ -111,7 +112,7 @@
 <script setup>
 import { RouterLink, RouterView } from "vue-router";
 import { supabase } from "../supabase";
-import { onMounted, ref, toRefs } from "vue";
+import { onMounted, onUpdated, ref, toRefs } from "vue";
 import { useUserStore } from "../stores/user";
 import { useRouter } from "vue-router";
 
@@ -125,8 +126,13 @@ const name = ref(null);
 const nick_name = ref(null);
 const redirect = useRouter();
 const role = ref("null");
+const navClass = ref("hidden w-full md:block md:w-auto");
 
 onMounted(() => {
+  getUser();
+});
+
+onUpdated(() => {
   getUser();
 });
 
@@ -151,6 +157,16 @@ const signOut = async () => {
     redirect.push({ path: "/auth/login" });
   } catch (error) {
     console.log(error);
+  }
+};
+
+const showMenu = () => {
+  if (loadedValue.value === false) {
+    navClass.value = "w-full md:block md:w-auto p-2";
+    loadedValue.value = !loadedValue.value;
+  } else {
+    navClass.value = "hidden w-full md:block md:w-auto p-2";
+    loadedValue.value = !loadedValue.value;
   }
 };
 </script>

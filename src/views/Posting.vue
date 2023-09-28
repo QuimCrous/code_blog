@@ -6,7 +6,7 @@ import { useUserStore } from "../stores/user";
 import { QuillEditor } from "@vueup/vue-quill";
 import "@vueup/vue-quill/dist/vue-quill.snow.css";
 import { usePostStore } from "../stores/posts";
-import DeltaCompProba from "../components/DeltaCompProba.vue";
+import DeltaComp from "../components/DeltaComp.vue";
 
 const role = ref("null");
 const post = ref(null);
@@ -95,7 +95,7 @@ const posting = async () => {
     <div>
       <button @click.prevent="posting()">postear?</button>
       <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
-      <DeltaCompProba :post="post" v-if="boolean" />
+      <DeltaComp :post="post" v-if="boolean" />
     </div>
   </div>
 </template>

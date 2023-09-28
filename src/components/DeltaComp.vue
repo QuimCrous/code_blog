@@ -1,6 +1,9 @@
 <template>
   <div>
-    <p class="line-break-container" v-html="renderizarTexto" />
+    <p
+      class="line-break-container text-justify mx-5"
+      v-html="renderizarTexto"
+    />
   </div>
 </template>
 

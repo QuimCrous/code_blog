@@ -4,6 +4,7 @@ import SignIn from "../components/SignIn.vue";
 import Auth from "../views/Auth.vue";
 import SignUp from "../components/SignUp.vue";
 import Posting from "../views/Posting.vue";
+import PostView from "../views/PostView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -17,6 +18,11 @@ const router = createRouter({
       path: "/posting",
       name: "posting",
       component: Posting,
+    },
+    {
+      path: "/post/:postId",
+      name: "post",
+      component: PostView,
     },
     {
       path: "/auth",

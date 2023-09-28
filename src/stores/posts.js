@@ -8,7 +8,7 @@ import { useUserStore } from "./user";
 export const usePostStore = defineStore("posts", () => {
   const postsArr = ref(null);
   const completeArr = ref(null);
-  const incompleteArr = ref(null);
+  const selectedPost = ref(null);
   const fetchPosts = async () => {
     const { data: posts } = await supabase
       .from("posts")
@@ -19,6 +19,16 @@ export const usePostStore = defineStore("posts", () => {
     completeArr.value = tasks.filter((task) => task.is_complete);
     incompleteArr.value = tasks.filter((task) => !task.is_complete);*/
     return postsArr.value;
+  };
+
+  const fetchSinglePost = async (postId) => {
+    const { data: post } = await supabase
+      .from("posts")
+      .select("*")
+      .eq("id", postId);
+    selectedPost.value = post;
+
+    return selectedPost.value;
   };
 
   const addPost = async (title, content, tags) => {
@@ -85,5 +95,6 @@ export const usePostStore = defineStore("posts", () => {
     deleteTask,
     modifyContent,
     postsArr,
+    fetchSinglePost,
   };
 });
