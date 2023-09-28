@@ -21,11 +21,13 @@ export const usePostStore = defineStore("posts", () => {
     return postsArr.value;
   };
 
-  const addPost = async (content) => {
+  const addPost = async (title, content, tags) => {
     /*console.log(useUserStore().user.id);*/
     const { data, error } = await supabase.from("posts").insert([
       {
         content: content,
+        title: title,
+        tags: tags,
       },
     ]);
   };
@@ -82,5 +84,6 @@ export const usePostStore = defineStore("posts", () => {
     addPost,
     deleteTask,
     modifyContent,
+    postsArr,
   };
 });
