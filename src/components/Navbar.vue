@@ -132,10 +132,6 @@ onMounted(() => {
   getUser();
 });
 
-onUpdated(() => {
-  getUser();
-});
-
 async function getUser() {
   await userStore.fetchUser();
   try {
