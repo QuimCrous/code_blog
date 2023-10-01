@@ -7,7 +7,6 @@ import { useUserStore } from "./user";
 
 export const usePostStore = defineStore("posts", () => {
   const postsArr = ref(null);
-  const completeArr = ref(null);
   const selectedPost = ref(null);
   const fetchPosts = async () => {
     const { data: posts } = await supabase
@@ -42,58 +41,27 @@ export const usePostStore = defineStore("posts", () => {
     ]);
   };
 
-  const modifyContent = async (id, title, description, priority) => {
-    if (title !== "" && description !== "") {
-      const { data, error } = await supabase
-        .from("tasks")
-        .update({
-          title: title,
-          description: description,
-          priority: priority,
-        })
-        .match({ id: id });
-    }
-    if (title === "" && description !== "") {
-      console.log("test2");
-      const { data, error } = await supabase
-        .from("tasks")
-        .update({
-          description: description,
-          priority: priority,
-        })
-        .match({ id: id });
-    }
-    if (title !== "" && description === "") {
-      console.log("test3");
-      const { data, error } = await supabase
-        .from("tasks")
-        .update({
-          title: title,
-          priority: priority,
-        })
-        .match({ id: id });
-    }
-    if (title === "" && description === "") {
-      console.log("test3");
-      const { data, error } = await supabase
-        .from("tasks")
-        .update({
-          priority: priority,
-        })
-        .match({ id: id });
-    }
+  const modifyPost = async (id, title, content, tags) => {
+    const { data, error } = await supabase
+      .from("posts")
+      .update({
+        title: title,
+        content: content,
+        tags: tags,
+      })
+      .match({ id: id });
   };
 
-  const deleteTask = async (id) => {
-    const { data, error } = await supabase.from("tasks").delete().match({
+  const deletePost = async (id) => {
+    const { data, error } = await supabase.from("posts").delete().match({
       id: id,
     });
   };
   return {
     fetchPosts,
     addPost,
-    deleteTask,
-    modifyContent,
+    deletePost,
+    modifyPost,
     postsArr,
     fetchSinglePost,
   };

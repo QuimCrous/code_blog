@@ -1,5 +1,8 @@
 <template>
   <div>
+    <header>
+      <Navbar />
+    </header>
     <h2>Hola :)</h2>
     <p v-if="boolean">{{ selectedPost.title }}</p>
     <Post :post="selectedPost" v-if="boolean" />
