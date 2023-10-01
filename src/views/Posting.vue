@@ -6,7 +6,9 @@ import { useUserStore } from "../stores/user";
 import { QuillEditor } from "@vueup/vue-quill";
 import "@vueup/vue-quill/dist/vue-quill.snow.css";
 import { usePostStore } from "../stores/posts";
+import { useRouter } from "vue-router";
 
+const redirect = useRouter();
 const role = ref("null");
 const post = ref(null);
 const titulo = ref("");
@@ -27,13 +29,10 @@ async function getUser() {
 }
 
 const posting = async () => {
-  console.log("probes varies: ", titulo.value);
-  console.log("probes varies: ", post.value);
-  console.log("probes varies2: ", typeof post.value);
-  console.log("probes varies: ", tags.value);
   await usePostStore().addPost(titulo.value, post.value, tags.value);
-  console.log("conseguit?");
+
   boolean.value = true;
+  redirect.push({ path: "/" });
 };
 </script>
 
@@ -42,6 +41,7 @@ const posting = async () => {
     <Navbar />
   </header>
   <div
+    v-if="role === 'admin'"
     class="h-screen bg-sky-900 bg-opacity-50 flex flex-col justify-start flex-wrap content-center pt-5 w-full text-white"
   >
     <div
@@ -108,6 +108,7 @@ const posting = async () => {
       </button>
     </div>
   </div>
+  <div>NO ESTAS PERMITIDO ESTAR AQUI!</div>
 </template>
 
 <style scoped></style>
