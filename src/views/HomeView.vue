@@ -20,9 +20,9 @@ getPost();
     <Navbar />
   </header>
   <div
-    class="h-screen bg-sky-900 bg-opacity-50 flex flex-col justify-start flex-wrap content-center pt-5"
+    class="md:h-full bg-sky-900 bg-opacity-50 flex flex-col justify-start flex-wrap content-center pt-5 w-full"
   >
-    <div class="w-3/4" v-for="post in posts" :key="post.id">
+    <div class="md:w-3/4 w-96" v-for="post in posts" :key="post.id">
       <Post :post="post" />
       <p>--------------</p>
     </div>
