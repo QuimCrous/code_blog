@@ -15,9 +15,21 @@ const titulo = ref("");
 const tags = ref([]);
 const boolean = ref(false);
 
+const files = ref();
+const uploaded = ref(false);
+const path = ref(null);
+const imagePathOne = ref(null);
+
+const inputText = ref("");
+const itemList = ref([]);
+
 onMounted(() => {
   getUser();
 });
+
+const updateList = () => {
+  itemList.value = inputText.value.split(",").map((item) => item.trim());
+};
 
 async function getUser() {
   await useUserStore().fetchUser();
@@ -29,7 +41,12 @@ async function getUser() {
 }
 
 const posting = async () => {
-  await usePostStore().addPost(titulo.value, post.value, tags.value);
+  await usePostStore().addPost(
+    titulo.value,
+    post.value,
+    tags.value,
+    itemList.value
+  );
 
   boolean.value = true;
   redirect.push({ path: "/" });
@@ -42,7 +59,7 @@ const posting = async () => {
   </header>
   <div
     v-if="role === 'admin'"
-    class="h-screen bg-sky-900 bg-opacity-50 flex flex-col justify-start flex-wrap content-center pt-5 w-full text-white"
+    class="h-full bg-sky-900 bg-opacity-50 flex flex-col justify-start flex-wrap content-center pt-5 w-full text-white"
   >
     <div
       class="md:w-3/4 w-96 my-5 border rounded-md border-sky-800 bg-sky-600 p-5"
@@ -98,6 +115,29 @@ const posting = async () => {
         <option value="personal">Personal</option>
         <option value="programacion">Programación</option>
       </select>
+    </div>
+
+    <div
+      class="md:w-3/4 w-96 my-5 border rounded-md border-sky-800 bg-sky-600 p-5"
+    >
+      <label
+        for="inputList"
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >Ingresa las cadenas de texto (separadas por coma):</label
+      >
+      <input
+        class="block p-2.5 w-full text-sm bg-sky-900 bg-opacity-0 border placeholder-gray-700"
+        type="text"
+        id="inputList"
+        v-model="inputText"
+        @input="updateList"
+      />
+      <div>
+        <strong>Resultado:</strong>
+        <ul>
+          <li v-for="(item, index) in itemList" :key="index">{{ item }}</li>
+        </ul>
+      </div>
     </div>
     <div class="md:w-3/4 w-96 py-5">
       <button

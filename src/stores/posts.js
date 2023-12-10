@@ -30,13 +30,14 @@ export const usePostStore = defineStore("posts", () => {
     return selectedPost.value;
   };
 
-  const addPost = async (title, content, tags) => {
+  const addPost = async (title, content, tags, images) => {
     /*console.log(useUserStore().user.id);*/
     const { data, error } = await supabase.from("posts").insert([
       {
         content: content,
         title: title,
         tags: tags,
+        images: images,
       },
     ]);
   };

@@ -3,6 +3,7 @@
     class="border-2 rounded-md py-5 px-5 border-sky-800 bg-sky-800 text-white"
   >
     <h2 class="text-5xl mb-16 text-center">{{ post.title }}</h2>
+    <img :src="post.images[0]" alt="" v-if="post.images" />
     <DeltaComp class="mb-16" :post="post.content" />
     <ul class="flex flex-wrap items-center justify-center">
       <li
