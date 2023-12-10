@@ -1,11 +1,13 @@
 <template>
-  <div>
-    <header>
-      <Navbar />
-    </header>
-    <h2>Hola :)</h2>
-    <p v-if="boolean">{{ selectedPost.title }}</p>
-    <Post :post="selectedPost" v-if="boolean" />
+  <header>
+    <Navbar />
+  </header>
+  <div
+    class="md:h-screen bg-sky-900 bg-opacity-50 flex flex-col justify-start flex-wrap content-center pt-5 w-full h-screen"
+  >
+    <div class="md:w-3/4 w-96">
+      <Post :post="selectedPost" v-if="boolean" />
+    </div>
   </div>
 </template>
 
