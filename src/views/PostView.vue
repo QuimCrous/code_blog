@@ -1,11 +1,19 @@
 <template>
-  <header>
+  <!-- <header>
     <Navbar />
   </header>
   <div
-    class="md:h-screen bg-sky-900 bg-opacity-50 flex flex-col justify-start flex-wrap content-center pt-5 w-full h-screen"
+    class="bg-sky-900 bg-opacity-50 flex flex-col justify-start flex-wrap content-center pt-5 w-full h-screen"
   >
-    <div class="md:w-3/4 w-96">
+    <div class="md:w-3/4 w-96 pb-5 h-full">
+      <Post :post="selectedPost" v-if="boolean" />
+    </div>
+  </div> -->
+  <div class="bg-sky-900 bg-opacity-50 flex flex-col min-h-screen">
+    <header>
+      <Navbar />
+    </header>
+    <div class="md:w-3/4 w-96 pb-5 mx-auto pt-5">
       <Post :post="selectedPost" v-if="boolean" />
     </div>
   </div>
