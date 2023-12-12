@@ -6,63 +6,61 @@ import { useUserStore } from "./user";
 // Esta tienda utiliza el Composition API
 
 export const useCommentStore = defineStore("comments", () => {
-  const postsArr = ref(null);
-  const selectedPost = ref(null);
-  const fetchPosts = async () => {
-    const { data: posts } = await supabase
-      .from("posts")
+  const commentsArr = ref(null);
+  const selectedComment = ref(null);
+  const fetchComments = async (postId) => {
+    const { data: comments } = await supabase
+      .from("comments")
       .select("*")
+      .eq("post_id", postId)
       .order("id", { ascending: false });
-    postsArr.value = posts;
-    /*
-    completeArr.value = tasks.filter((task) => task.is_complete);
-    incompleteArr.value = tasks.filter((task) => !task.is_complete);*/
-    return postsArr.value;
+    commentsArr.value = comments;
+
+    return commentsArr.value;
   };
 
-  const fetchSinglePost = async (postId) => {
-    const { data: post } = await supabase
-      .from("posts")
+  const fetchSingleComment = async (commentId) => {
+    const { data: comment } = await supabase
+      .from("comments")
       .select("*")
-      .eq("id", postId);
-    selectedPost.value = post;
+      .eq("id", commentId);
+    selectedComment.value = comment;
 
-    return selectedPost.value;
+    return selectedComment.value;
   };
 
-  const addPost = async (title, content, tags) => {
+  const addComment = async (postId, comment, userId, username) => {
     /*console.log(useUserStore().user.id);*/
-    const { data, error } = await supabase.from("posts").insert([
+    const { data, error } = await supabase.from("comments").insert([
       {
-        content: content,
-        title: title,
-        tags: tags,
+        post_id: postId,
+        comment: comment,
+        user_id: userId,
+        username: username,
       },
     ]);
   };
 
-  const modifyPost = async (id, title, content, tags) => {
+  const modifyComment = async (id, comment) => {
     const { data, error } = await supabase
-      .from("posts")
+      .from("comments")
       .update({
-        title: title,
-        content: content,
-        tags: tags,
+        comment: comment,
       })
       .match({ id: id });
   };
 
-  const deletePost = async (id) => {
-    const { data, error } = await supabase.from("posts").delete().match({
+  const deleteComment = async (id) => {
+    const { data, error } = await supabase.from("comments").delete().match({
       id: id,
     });
   };
   return {
-    fetchPosts,
-    addPost,
-    deletePost,
-    modifyPost,
-    postsArr,
-    fetchSinglePost,
+    fetchComments,
+    addComment,
+    deleteComment,
+    modifyComment,
+    commentsArr,
+    fetchSingleComment,
   };
 });

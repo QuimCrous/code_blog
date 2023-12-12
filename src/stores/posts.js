@@ -14,9 +14,7 @@ export const usePostStore = defineStore("posts", () => {
       .select("*")
       .order("id", { ascending: false });
     postsArr.value = posts;
-    /*
-    completeArr.value = tasks.filter((task) => task.is_complete);
-    incompleteArr.value = tasks.filter((task) => !task.is_complete);*/
+
     return postsArr.value;
   };
 
