@@ -6,6 +6,20 @@
     <div class="md:w-3/4 w-96 pb-5 mx-auto pt-5">
       <Post :post="selectedPost" v-if="boolean" />
     </div>
+    <div
+      class="md:w-3/4 w-96 pb-5 mx-auto pt-5 border-2 rounded-md border-sky-800 bg-sky-800 text-white flex flex-col mb-5"
+    >
+      <label for="comment" class="mx-5">Commentar: {{ username }}</label>
+      <textarea
+        class="mx-5 bg-sky-900"
+        name="comment"
+        id="comment"
+        cols="30"
+        rows="10"
+        v-model="comment"
+      ></textarea>
+      <button @click="postComment()">Commentar</button>
+    </div>
   </div>
 </template>
 
@@ -15,10 +29,16 @@ import { useRoute } from "vue-router";
 import { usePostStore } from "../stores/posts";
 import Navbar from "../components/Navbar.vue";
 import Post from "../components/Post.vue";
+import { useUserStore } from "../stores/user";
+import { useCommentStore } from "../stores/comments";
 
 const route = useRoute();
 const selectedPost = ref(null);
 const boolean = ref(false);
+const username = ref("");
+const userStore = useUserStore();
+const comment = ref("");
+const userId = ref(null);
 
 const getPostById = async () => {
   const postId = route.params.postId;
@@ -30,8 +50,33 @@ const getPostById = async () => {
   boolean.value = true;
 };
 
+async function getUser() {
+  await userStore.fetchUser();
+  try {
+    username.value = userStore.user.data.user.email;
+    //userId.value = userStore.user.data.user.id;
+  } catch (error) {
+    username.value = "";
+  }
+}
+
+const postComment = async () => {
+  const postId = route.params.postId;
+  console.log("pero pero", userId.value);
+
+  await useCommentStore().addComment(
+    postId,
+    comment.value,
+    userId.value,
+    username.value
+  );
+
+  comment.value = "";
+};
+
 onMounted(() => {
   getPostById();
+  getUser();
 });
 </script>
 
