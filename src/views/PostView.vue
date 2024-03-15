@@ -21,9 +21,7 @@
       <button @click="postComment()">Commentar</button>
     </div>
     <div class="md:w-3/4 w-96 pb-5 mx-auto pt-5">
-      <p>juer juer aixo no tira</p>
       <div v-if="boolean2" v-for="comment in commentArr">
-        <p>ei?</p>
         <Comment :postcomment="comment" />
       </div>
       <div v-else>lolololo</div>
