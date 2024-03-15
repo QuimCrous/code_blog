@@ -21,10 +21,34 @@
       <button @click="postComment()">Commentar</button>
     </div>
     <div class="md:w-3/4 w-96 pb-5 mx-auto pt-5">
-      <div v-if="boolean2" v-for="comment in commentArr">
+      <div
+        v-if="boolean2"
+        v-for="comment in paginatedComments"
+        :key="comment.id"
+      >
         <Comment :postcomment="comment" />
       </div>
       <div v-else>lolololo</div>
+      <div>
+        <button
+          class="border-2 rounded-md py-5 px-5 border-sky-800 bg-sky-800 text-white mb-5"
+          @click="previousPage"
+          :disabled="currentPage === 1"
+        >
+          Anterior
+        </button>
+        <span
+          class="border-2 rounded-md py-5 px-5 border-sky-800 bg-sky-800 text-white mb-5 mx-5"
+          >{{ currentPage }} / {{ totalPages }}</span
+        >
+        <button
+          class="border-2 rounded-md py-5 px-5 border-sky-800 bg-sky-800 text-white mb-5"
+          @click="nextPage"
+          :disabled="currentPage === totalPages"
+        >
+          Siguiente
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -49,14 +73,14 @@ const comment = ref("");
 const userId = ref(null);
 const userProfile = ref(null);
 const commentArr = ref(null);
+const currentPage = ref(1);
+const pageSize = ref(10);
 
 const getPostById = async () => {
   const postId = route.params.postId;
 
   const response = await usePostStore().fetchSinglePost(postId);
   selectedPost.value = response[0];
-  console.log("papapapapa papa: ", selectedPost.value);
-  console.log("2: ", selectedPost.value.title);
   boolean.value = true;
 };
 
@@ -64,13 +88,7 @@ const getComments = async () => {
   const postId = route.params.postId;
   const response = await useCommentStore().fetchComments(postId);
   commentArr.value = response;
-  console.log("entro aqui?");
-  console.log("entro aqui?", commentArr.value);
-  for (let index = 0; index < commentArr.value.length; index++) {
-    console.log(commentArr.value[index]);
-  }
   boolean2.value = true;
-  console.log("entro aqui?", boolean2.value);
 };
 
 async function getUser() {
@@ -86,9 +104,6 @@ async function getUser() {
 
 const postComment = async () => {
   const postId = route.params.postId;
-  console.log("pero pero", username.value);
-  console.log("yo ya no se que mas", userId.value);
-
   await useCommentStore().addComment(
     postId,
     comment.value,
@@ -97,6 +112,31 @@ const postComment = async () => {
   );
 
   comment.value = "";
+  getComments();
+};
+
+const paginatedComments = computed(() => {
+  const startIndex = (currentPage.value - 1) * pageSize.value;
+  const endIndex = startIndex + pageSize.value;
+  return commentArr.value ? commentArr.value.slice(startIndex, endIndex) : [];
+});
+
+const totalPages = computed(() => {
+  return Math.ceil(
+    (commentArr.value ? commentArr.value.length : 0) / pageSize.value
+  );
+});
+
+const nextPage = () => {
+  if (currentPage.value < totalPages.value) {
+    currentPage.value++;
+  }
+};
+
+const previousPage = () => {
+  if (currentPage.value > 1) {
+    currentPage.value--;
+  }
 };
 
 onMounted(() => {
