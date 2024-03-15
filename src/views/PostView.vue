@@ -26,7 +26,7 @@
         v-for="comment in paginatedComments"
         :key="comment.id"
       >
-        <Comment :postcomment="comment" />
+        <Comment :postcomment="comment" :userId="userId" />
       </div>
       <div v-else>lolololo</div>
       <div>
