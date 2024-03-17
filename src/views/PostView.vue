@@ -4,6 +4,7 @@
       <Navbar />
     </header>
     <div class="md:w-3/4 w-96 pb-5 mx-auto pt-5">
+      <p>patata</p>
       <Post :post="selectedPost" v-if="boolean" />
     </div>
     <div

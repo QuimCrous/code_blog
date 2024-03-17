@@ -6,6 +6,7 @@ import Navbar from "../components/Navbar.vue";
   <header>
     <Navbar />
   </header>
+  <p>Aqui va tot lo del Perfil</p>
 </template>
 
 <style></style>

@@ -42,14 +42,22 @@
         </button>
         <div :class="navClass" id="navbar-default">
           <ul
-            class="font-medium flex flex-col p-4 md:p-0 mt-4 md:flex-row md:space-x-8 md:mt-0 md:border-0"
+            class="font-medium flex flex-col p-4 md:p-0 mt-4 md:flex-row md:space-x-8 md:mt-0 md:border-0 items-center"
           >
             <li>
-              <p
-                class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-              >
-                Hola {{ username === "" ? "Invitado" : username }}!
-              </p>
+              <div class="flex flex-row items-center">
+                <img
+                  :src="profilePic"
+                  class="h-12 mr-3"
+                  alt="FrikyBlog Logo"
+                  v-if="username"
+                />
+                <p
+                  class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                >
+                  Hola {{ username === "" ? "Invitado" : username }}!
+                </p>
+              </div>
             </li>
             <li>
               <RouterLink
@@ -67,10 +75,10 @@
               >
             </li>
             <li>
-              <a
-                href="#"
+              <RouterLink
+                to="/profile"
                 class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-                >Perfil</a
+                >Perfil</RouterLink
               >
             </li>
             <li v-if="username === ''">
@@ -127,6 +135,7 @@ const nick_name = ref(null);
 const redirect = useRouter();
 const role = ref("null");
 const navClass = ref("hidden w-full md:block md:w-auto");
+const profilePic = ref("");
 
 onMounted(() => {
   getUser();
@@ -137,6 +146,7 @@ async function getUser() {
   try {
     username.value = userStore.user.data.user.email;
     role.value = userStore.profile.role;
+    profilePic.value = userStore.profile.image_src;
   } catch (error) {
     username.value = "";
   }

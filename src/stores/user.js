@@ -18,7 +18,7 @@ export const useUserStore = defineStore("user", {
         if (this.user.data.user !== null) {
           const userId = this.user.data.user.id;
           const { data: profile } = await supabase
-            .from("profiles")
+            .from("profile")
             .select()
             .match({ user_id: userId });
 
@@ -43,11 +43,13 @@ export const useUserStore = defineStore("user", {
       });
       console.log("user: ", response.data.user.id);
 
-      const { data: profile } = await supabase.from("profiles").insert([
+      const { data: profile } = await supabase.from("profile").insert([
         {
           user_id: response.data.user.id,
           username: email,
           role: "user",
+          image_src:
+            "https://eididoxcdtwwxnfqlthx.supabase.co/storage/v1/object/public/images/profileAvatars/Av%20Pikachu.png",
         },
       ]);
 
@@ -70,7 +72,7 @@ export const useUserStore = defineStore("user", {
         this.user = user;
 
         const { data: profile } = await supabase
-          .from("profiles")
+          .from("profile")
           .select()
           .match({ user_id: this.user.id });
 
@@ -101,7 +103,7 @@ export const useUserStore = defineStore("user", {
         newNickName = this.profile.nick_name;
       }
       const { data, error } = await supabase
-        .from("profiles")
+        .from("profile")
         .update({
           name: newName,
           website: newWebsite,
