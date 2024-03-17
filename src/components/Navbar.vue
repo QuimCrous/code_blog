@@ -6,8 +6,8 @@
       >
         <RouterLink to="/" class="flex items-center">
           <img
-            src="../../public/img/emot11.png"
-            class="h-8 mr-3"
+            src="../../public/img/Logosensefondo.png"
+            class="h-12 mr-3"
             alt="FrikyBlog Logo"
           />
           <span
