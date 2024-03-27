@@ -43,15 +43,19 @@ export const useUserStore = defineStore("user", {
       });
       console.log("user: ", response.data.user.id);
 
-      const { data: profile } = await supabase.from("profile").insert([
-        {
-          user_id: response.data.user.id,
-          username: email,
-          role: "user",
-          image_src:
-            "https://eididoxcdtwwxnfqlthx.supabase.co/storage/v1/object/public/images/profileAvatars/Av%20Pikachu.png",
-        },
-      ]);
+      try {
+        const { data: profile } = await supabase.from("profile").insert([
+          {
+            user_id: response.data.user.id,
+            username: email,
+            role: "user",
+            image_src:
+              "https://eididoxcdtwwxnfqlthx.supabase.co/storage/v1/object/public/images/profileAvatars/Av%20Pikachu.png",
+          },
+        ]);
+      } catch (error) {
+        console.log(error);
+      }
 
       console.log("PERFIL: ", profile);
     },
@@ -80,7 +84,14 @@ export const useUserStore = defineStore("user", {
         console.log("profile in store: ", profile);
       }
     },
+    async getUserNameImageSrc(userId) {
+      const { data: user } = await supabase
+        .from("profile")
+        .select()
+        .match({ id: userId });
 
+      return user;
+    },
     async signOut() {
       const { error } = await supabase.auth.signOut();
 
