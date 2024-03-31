@@ -27,7 +27,11 @@
         v-for="comment in paginatedComments"
         :key="comment.id"
       >
-        <Comment :postcomment="comment" :userId="userId" />
+        <Comment
+          :postcomment="comment"
+          :userId="userId"
+          @delete-comment="deleteComment"
+        />
       </div>
       <div v-else>lolololo</div>
       <div>
@@ -113,6 +117,11 @@ const postComment = async () => {
   );
 
   comment.value = "";
+  getComments();
+};
+
+const deleteComment = async (evt) => {
+  await useCommentStore().deleteComment(evt);
   getComments();
 };
 

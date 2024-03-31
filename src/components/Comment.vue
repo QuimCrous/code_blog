@@ -16,6 +16,7 @@
     </p>
     <button
       v-if="postcomment.user_id === userId"
+      @click="deletComment()"
       class="border-2 rounded-md py-5 px-5 border-sky-800 bg-sky-900 text-white"
     >
       Borrar
@@ -24,7 +25,7 @@
 </template>
 
 <script setup>
-import { onMounted, ref, watchEffect } from "vue";
+import { getCurrentInstance, onMounted, ref, watchEffect } from "vue";
 import { useUserStore } from "../stores/user";
 
 const user = ref(null);
@@ -44,6 +45,12 @@ const getUser = async () => {
   }
   avatar.value = user.value[0].image_src;
   console.log("he arribat a aqui", avatar.value);
+};
+
+const emits = defineEmits(["delete-comment"]);
+
+const deletComment = () => {
+  emits("delete-comment", comment.postcomment.id);
 };
 
 onMounted(() => {
