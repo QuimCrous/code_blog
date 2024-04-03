@@ -1,12 +1,43 @@
 <script setup>
+import { onMounted, ref } from "vue";
 import Navbar from "../components/Navbar.vue";
+import { useUserStore } from "../stores/user";
+
+const user = ref(null);
+const profile = ref(null);
+
+const getUserProfile = async () => {
+  await useUserStore().fetchUser();
+  user.value = useUserStore().user.data.user;
+  profile.value = useUserStore().profile;
+
+  console.log("Hola 1", user.value);
+  console.log("Hola 2", profile.value);
+};
+
+onMounted(() => {
+  getUserProfile();
+});
 </script>
 
 <template>
-  <header>
-    <Navbar />
-  </header>
-  <p>Aqui va tot lo del Perfil</p>
+  <div class="bg-sky-900 bg-opacity-50 flex flex-col min-h-screen">
+    <header>
+      <Navbar />
+    </header>
+    <div
+      class="md:w-3/4 w-96 pb-5 mx-auto pt-5 flex flex-col justify-center items-center rounded-md border-sky-800 bg-sky-800 mt-5 text-white text-2xl"
+      v-if="profile"
+    >
+      <div class="my-8">
+        <img :src="profile.image_src" alt="" />
+      </div>
+      <div>
+        <p class="my-8 bg-sky-900 p-4">User Name: {{ profile.username }}</p>
+        <p class="my-8 bg-sky-900 p-4">E-mail: {{ user.email }}</p>
+      </div>
+    </div>
+  </div>
 </template>
 
 <style></style>
