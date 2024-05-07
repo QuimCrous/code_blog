@@ -6,6 +6,7 @@ import SignUp from "../components/SignUp.vue";
 import Posting from "../views/Posting.vue";
 import PostView from "../views/PostView.vue";
 import ProfileView from "../views/ProfileView.vue";
+import ProfileEdit from "../views/ProfileEdit.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -24,6 +25,11 @@ const router = createRouter({
       path: "/profile",
       name: "profile",
       component: ProfileView,
+    },
+    {
+      path: "/profile-edit",
+      name: "profile-edit",
+      component: ProfileEdit,
     },
     {
       path: "/post/:postId",

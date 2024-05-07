@@ -4,22 +4,28 @@
       <Navbar />
     </header>
     <div class="md:w-3/4 w-96 pb-5 mx-auto pt-5">
-      <p>patata</p>
       <Post :post="selectedPost" v-if="boolean" />
     </div>
     <div
       class="md:w-3/4 w-96 pb-5 mx-auto pt-5 border-2 rounded-md border-sky-800 bg-sky-800 text-white flex flex-col mb-5"
     >
-      <label for="comment" class="mx-5">Commentar: {{ username }}</label>
+      <label for="comment" class="mx-5">Comentar: {{ username }}</label>
       <textarea
         class="mx-5 bg-sky-900"
         name="comment"
         id="comment"
         cols="30"
-        rows="10"
+        rows="5"
         v-model="comment"
       ></textarea>
-      <button @click="postComment()">Commentar</button>
+      <div class="flex justify-center mt-5">
+        <button
+          class="border-2 rounded-md py-5 px-5 border-sky-800 bg-sky-900 text-white"
+          @click="postComment()"
+        >
+          Comentar
+        </button>
+      </div>
     </div>
     <div class="md:w-3/4 w-96 pb-5 mx-auto pt-5">
       <div

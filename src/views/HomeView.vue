@@ -24,7 +24,6 @@ getPost();
   >
     <div class="md:w-3/4 w-96" v-for="post in posts" :key="post.id">
       <Post :post="post" />
-      <p>--------------</p>
     </div>
   </div>
 </template>

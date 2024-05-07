@@ -128,10 +128,6 @@ const userStore = useUserStore();
 
 const loadedValue = ref(false);
 const username = ref("null");
-const website = ref(null);
-const avatar_url = ref(null);
-const name = ref(null);
-const nick_name = ref(null);
 const redirect = useRouter();
 const role = ref("null");
 const navClass = ref("hidden w-full md:block md:w-auto");
@@ -144,14 +140,12 @@ onMounted(() => {
 async function getUser() {
   await userStore.fetchUser();
   try {
-    username.value = userStore.user.data.user.email;
+    username.value = userStore.profile.username;
     role.value = userStore.profile.role;
     profilePic.value = userStore.profile.image_src;
   } catch (error) {
     username.value = "";
   }
-  console.log("papapapo", username.value);
-  console.log("papapapo2", role.value);
 }
 
 const signOut = async () => {

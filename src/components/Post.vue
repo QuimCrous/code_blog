@@ -1,6 +1,6 @@
 <template>
   <div
-    class="border-2 rounded-md py-5 px-5 border-sky-800 bg-sky-800 text-white"
+    class="border-2 rounded-md py-5 px-5 border-sky-800 bg-sky-800 text-white mb-5"
   >
     <h2 class="text-5xl mb-16 text-center">{{ post.title }}</h2>
     <div class="flex justify-center mb-16">
@@ -30,7 +30,7 @@
         v-if="post.images"
       />
     </div>
-    <RouterLink :to="`/post/${post.id}`">{{ post.id }} Link al post</RouterLink>
+    <RouterLink :to="`/post/${post.id}`">Link al post</RouterLink>
   </div>
 </template>
 

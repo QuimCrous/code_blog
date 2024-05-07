@@ -44,7 +44,6 @@ const getUser = async () => {
     );
   }
   avatar.value = user.value[0].image_src;
-  console.log("he arribat a aqui", avatar.value);
 };
 
 const emits = defineEmits(["delete-comment"]);
