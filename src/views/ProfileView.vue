@@ -22,9 +22,6 @@ onMounted(() => {
 
 <template>
   <div class="bg-sky-900 bg-opacity-50 flex flex-col min-h-screen">
-    <header>
-      <Navbar />
-    </header>
     <div
       class="md:w-3/4 w-96 pb-5 mx-auto pt-5 flex flex-col justify-center items-center rounded-md border-sky-800 bg-sky-800 mt-5 text-white text-2xl"
       v-if="profile"

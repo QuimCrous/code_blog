@@ -30,7 +30,9 @@
         v-if="post.images"
       />
     </div>
-    <RouterLink :to="`/post/${post.id}`">Link al post</RouterLink>
+    <RouterLink :to="`/post/${post.id}`" @click.native="scrollToTop"
+      >Link al post</RouterLink
+    >
   </div>
 </template>
 
@@ -40,6 +42,10 @@ import { RouterLink, RouterView } from "vue-router";
 const postObj = defineProps({
   post: Object,
 });
+
+const scrollToTop = () => {
+  window.scrollTo(0, 0);
+};
 </script>
 
 <style scoped></style>
