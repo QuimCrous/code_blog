@@ -1,4 +1,5 @@
 <template>
+  <Navbar />
   <div class="bg-sky-900 bg-opacity-50 flex flex-col min-h-screen">
     <div class="md:w-3/4 w-96 pb-5 mx-auto pt-5">
       <Post :post="selectedPost" v-if="boolean" />

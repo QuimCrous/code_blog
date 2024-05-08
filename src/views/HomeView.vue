@@ -16,6 +16,7 @@ getPost();
 </script>
 
 <template>
+  <Navbar />
   <div
     class="md:h-full bg-sky-900 bg-opacity-50 flex flex-col justify-start flex-wrap content-center pt-5 w-full"
   >

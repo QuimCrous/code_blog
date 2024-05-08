@@ -98,6 +98,9 @@ export const useUserStore = defineStore("user", {
       if (error) {
         throw error;
       }
+
+      this.user = null;
+      this.profile = null;
     },
     //TODO primero tengo que hacer la view de perfil y de modificacion de perfil, para saber que es lo que tendran de atributos para hacer update
     async modifyProfile(username, image_src) {

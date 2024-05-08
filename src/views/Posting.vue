@@ -54,6 +54,7 @@ const posting = async () => {
 </script>
 
 <template>
+  <Navbar />
   <div
     v-if="role === 'admin'"
     class="h-full bg-sky-900 bg-opacity-50 flex flex-col justify-start flex-wrap content-center pt-5 w-full text-white"

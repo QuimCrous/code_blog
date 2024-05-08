@@ -147,6 +147,12 @@ watchEffect(() => {
   }
 });
 
+watchEffect(() => {
+  if (userStore.profile && userStore.profile.username !== null) {
+    username.value = userStore.profile.username;
+  }
+});
+
 async function getUser() {
   await userStore.fetchUser();
   try {
