@@ -2,6 +2,7 @@
 import { onMounted, ref } from "vue";
 import Navbar from "../components/Navbar.vue";
 import { useUserStore } from "../stores/user";
+import { useRouter } from "vue-router";
 
 const user = ref(null);
 const profile = ref(null);
@@ -21,6 +22,7 @@ const imageUrls = ref([
   "https://eididoxcdtwwxnfqlthx.supabase.co/storage/v1/object/public/images/profileAvatars/Avyiga.png?t=2024-04-29T11%3A01%3A26.592Z",
   "https://eididoxcdtwwxnfqlthx.supabase.co/storage/v1/object/public/images/profileAvatars/Avtarta.png?t=2024-04-29T11%3A14%3A34.882Z",
 ]);
+const router = useRouter();
 
 const getUserProfile = async () => {
   await useUserStore().fetchUser();
@@ -35,6 +37,17 @@ const getUserProfile = async () => {
 
 const selectImage = (imageURl) => {
   selectedImage.value = imageURl;
+};
+
+const modifyProfile = async () => {
+  await useUserStore().modifyProfile(
+    selectedUserName.value,
+    selectedImage.value
+  );
+
+  await useUserStore().fetchUser();
+
+  router.push("/");
 };
 
 onMounted(() => {
@@ -80,6 +93,14 @@ onMounted(() => {
             class="mt-1 p-2 border border-gray-300 rounded-md w-full text-gray-700"
             placeholder="Introduce tu nombre de usuario"
           />
+        </div>
+        <div class="flex justify-center mt-5">
+          <button
+            class="border-2 rounded-md py-5 px-5 border-sky-800 bg-sky-900 text-white"
+            @click="modifyProfile()"
+          >
+            Guardar cambios
+          </button>
         </div>
       </div>
     </div>

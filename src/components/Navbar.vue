@@ -120,7 +120,7 @@
 <script setup>
 import { RouterLink, RouterView } from "vue-router";
 import { supabase } from "../supabase";
-import { onMounted, onUpdated, ref, toRefs } from "vue";
+import { onMounted, onUpdated, ref, toRefs, watchEffect } from "vue";
 import { useUserStore } from "../stores/user";
 import { useRouter } from "vue-router";
 
@@ -135,6 +135,16 @@ const profilePic = ref("");
 
 onMounted(() => {
   getUser();
+});
+
+onUpdated(() => {
+  getUser();
+});
+
+watchEffect(() => {
+  if (userStore.profile && userStore.profile.image_src !== null) {
+    profilePic.value = userStore.profile.image_src;
+  }
 });
 
 async function getUser() {

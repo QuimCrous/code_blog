@@ -100,26 +100,12 @@ export const useUserStore = defineStore("user", {
       }
     },
     //TODO primero tengo que hacer la view de perfil y de modificacion de perfil, para saber que es lo que tendran de atributos para hacer update
-    async modifyProfile(newName, newWebsite, newNickName, newAvatarUrl) {
-      if (newName === null) {
-        newName = this.profile.name;
-      }
-      if (newWebsite === null) {
-        newWebsite = this.profile.website;
-      }
-      if (newAvatarUrl === null) {
-        newAvatarUrl = this.profile.image_src;
-      }
-      if (newNickName === null) {
-        newNickName = this.profile.nick_name;
-      }
+    async modifyProfile(username, image_src) {
       const { data, error } = await supabase
         .from("profile")
         .update({
-          name: newName,
-          website: newWebsite,
-          image_src: newAvatarUrl,
-          nick_name: newNickName,
+          username: username,
+          image_src: image_src,
         })
         .match({ id: this.profile.id });
     },
