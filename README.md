@@ -5,5 +5,56 @@
 <div align="center">
   <img src="./public/img/Logosensefondo.png" alt="Logo" width="200" height="180">
   <h2 align="center">Friky Blog</h2>
-  <a href="https://code-blog-lime.vercel.app/">Visit Website</a>
+  <a href="https://code-blog-lime.vercel.app/">Visitar Blog</a>
 </div>
+
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Tabla de Contenidos</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">Sobre el proyecto</a>
+      <ul>
+        <li><a href="#build-with">Creado con</a></li>
+      </ul>
+    </li>
+    <li>
+    <a href="#roadmap">Roadmap</a>
+     <ul>
+     <li><a href="#backlog">Back log</a></li>
+        <li><a href="#day-one">Tuesday 07, February 2023</a></li>
+        <li><a href="#day-two">Wednesday 08, February 2023</a></li>
+        <li><a href="#day-three">Thursday 09, February 2023</a></li>
+        <li><a href="#day-four">Friday 10, February 2023</a></li>
+        <li><a href="#day-five">Wednesday 15, February 2023</a></li>
+        <li><a href="#day-six">Thursday 16, February 2023</a></li>
+        <li><a href="#day-seven">Monday 20, February 2023</a></li>
+        <li><a href="#day-eight">Tuesday 21, February 2023</a></li>
+        <li><a href="#day-nine">Wednesday 22, February 2023</a></li>        
+      </ul>
+    </li>
+    <li><a href="#about">Mi información</a></li>
+    <li><a href="#special-thanks">Agradecimientos</a></li>
+    <li><a href="#technical-challenge">Desafío Técnico</a></li>
+    <li><a href="#big-mistake">Gran Error</a></li>
+  </ol>
+</details>
+<hr>
+
+<!-- ABOUT THE PROJECT -->
+
+## Sobre el proyecto
+
+<img src="./public/img/Logosensefondo.png" alt="Logo" width="100%" height="50%">
+
+Este es mi proyecto personal de creación de un blog, dónde he querido desafiar mis habilidades creando algo que permitiera poner a prueba mis habilidades adquiridas además de permitirme un alto nivel de creatividad i funcionalidad al proyecto. Desde el hecho de escribir el cçodigo por mi mismo hasta poder ponerme creativo al crear contenido para el blog.
+
+Desde que hice mis últimos proyectos, con este he querido seguir utilizando herramientas con las que me sintiera cómodo de utilizar y seguir un esquema básico de blog. Formado a partir de una SPA (Single Page Application) con una enrutación para poder moverse por las diferentes Views del proyecto.
+
+Este contiene los siguientes apartados:
+
+- Páginas de Inicio de Sesión y de Inscribirse (SignUp and SignIn): Apartado dónde se puede dar de alta en la página como iniciar sesión en esta. De visualización sencilla donde se pide un correo electrónico y una contraseña con la posibilidad de visualizar esta por parte del usuario.
+
+- Página principal (Home View): Vista principal del blog donde a parte de empezar a visualizar la barra de navegación, se muestran los diferentes Posts que he añadido. Se muestra una vision del post más un link que te traslada a PostView.
+
+- <p align="right">(<a href="#readme-top">back to top</a>)</p>
