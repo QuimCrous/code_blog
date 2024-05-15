@@ -88,25 +88,27 @@
             >Mostrar Contraseña</label
           >
         </div>
-        <div class="flex items-start mb-6"></div>
-        <button
-          type="submit"
-          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-        >
-          Crear Cuenta
-        </button>
+        <div class="flex items-center justify-center mb-6">
+          <button
+            type="submit"
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+          >
+            Crear Cuenta
+          </button>
+          <p class="text-center m-8 ml-12 mr-12 text-xl">
+            ¿O ya tienes cuenta? ➡️
+          </p>
+          <PersonalRouter
+            :route="route"
+            :buttonText="buttonText"
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+          />
+        </div>
       </form>
-      <p class="text-center m-8 ml-12 mr-12">
-        ¿Ya tienes cuenta?
-        <PersonalRouter
-          :route="route"
-          :buttonText="buttonText"
-          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-        />
-      </p>
+
       <p class="text-center m-8 mt-16">
         <PersonalRouter
-          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
           route="/"
           buttonText="Volver al Inicio"
         />
