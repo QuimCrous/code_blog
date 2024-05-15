@@ -3,6 +3,10 @@
     class="bg-sky-900 h-screen max-w-screen flex flex-col justify-center items-center"
   >
     <div class="border-4 p-5 border-sky-800 bg-sky-400 rounded-lg shadow-2xl">
+      <div class="flex justify-center">
+        <img src="../../public/img/Logosensefondo.png" class="w-64" alt="" />
+      </div>
+
       <div>
         <h3 class="text-2xl text-center m-5">Bienvenido a Friky Blog</h3>
         <p class="text-center m-3">Videojuegos y Anime. 🎮&📺</p>
