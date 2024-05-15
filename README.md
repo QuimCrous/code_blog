@@ -45,7 +45,7 @@
 
 ## Sobre el proyecto
 
-<img src="./public/img/Logosensefondo.png" alt="Logo" width="100%" height="50%">
+<img src="./public/img/Captura de pantalla 2024-05-15 102732.png" alt="Logo" width="100%" height="50%">
 
 Este es mi proyecto personal de creación de un blog, dónde he querido desafiar mis habilidades creando algo que permitiera poner a prueba mis habilidades adquiridas además de permitirme un alto nivel de creatividad i funcionalidad al proyecto. Desde el hecho de escribir el cçodigo por mi mismo hasta poder ponerme creativo al crear contenido para el blog.
 
@@ -57,4 +57,12 @@ Este contiene los siguientes apartados:
 
 - Página principal (Home View): Vista principal del blog donde a parte de empezar a visualizar la barra de navegación, se muestran los diferentes Posts que he añadido. Se muestra una vision del post más un link que te traslada a PostView.
 
-- <p align="right">(<a href="#readme-top">back to top</a>)</p>
+- Página Single Post (Post View): Esta vista contiene el mismo post del que se ha redirigido, además de contener un espacio para comentarios donde el usuario puede comentar y/o borrar el comentario/s. Hay una paginación para la muestra de los comentarios de mas nuevo a mas antiguo.
+
+- Perfil (Profile View): Una vista sencilla donde se muestra la imagen de usuario, su nombre de usuario y el correo con el que se inscribió. Contiene la opción de editar el perfil que traslada a la siguiente vista.
+
+- Editar Perfil (Profile Edit): Esta vista permite cambiar la imagen y el nombre del usuario.
+
+- Postear (Posting): Vista creada para el admin, que permite crear posts añadiendo el titulo, contenido, etiquetar y añadir imagenes desde una url.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
