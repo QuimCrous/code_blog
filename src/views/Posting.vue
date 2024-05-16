@@ -7,6 +7,7 @@ import { QuillEditor } from "@vueup/vue-quill";
 import "@vueup/vue-quill/dist/vue-quill.snow.css";
 import { usePostStore } from "../stores/posts";
 import { useRouter } from "vue-router";
+import Footer from "../components/Footer.vue";
 
 const redirect = useRouter();
 const role = ref("null");
@@ -147,6 +148,7 @@ const posting = async () => {
     </div>
   </div>
   <div>NO ESTAS PERMITIDO ESTAR AQUI!</div>
+  <Footer />
 </template>
 
 <style scoped></style>

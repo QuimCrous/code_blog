@@ -5,6 +5,7 @@ import { usePostStore } from "../stores/posts";
 import DeltaComp from "../components/DeltaComp.vue";
 import Post from "../components/Post.vue";
 import PostPreview from "../components/PostPreview.vue";
+import Footer from "../components/Footer.vue";
 
 const posts = ref([]);
 
@@ -25,4 +26,5 @@ getPost();
       <PostPreview :post="post" />
     </div>
   </div>
+  <Footer />
 </template>

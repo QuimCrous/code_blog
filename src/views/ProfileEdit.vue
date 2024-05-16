@@ -3,6 +3,7 @@ import { onMounted, ref } from "vue";
 import Navbar from "../components/Navbar.vue";
 import { useUserStore } from "../stores/user";
 import { useRouter } from "vue-router";
+import Footer from "../components/Footer.vue";
 
 const user = ref(null);
 const profile = ref(null);
@@ -106,6 +107,7 @@ onMounted(() => {
       </div>
     </div>
   </div>
+  <Footer />
 </template>
 
 <style></style>

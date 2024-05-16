@@ -60,6 +60,7 @@
       </div>
     </div>
   </div>
+  <Footer />
 </template>
 
 <script setup>
@@ -71,6 +72,7 @@ import Post from "../components/Post.vue";
 import { useUserStore } from "../stores/user";
 import { useCommentStore } from "../stores/comments";
 import Comment from "../components/Comment.vue";
+import Footer from "../components/Footer.vue";
 
 const route = useRoute();
 const selectedPost = ref(null);
