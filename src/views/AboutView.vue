@@ -13,8 +13,23 @@ import Footer from "../components/Footer.vue";
         <img src="../../public/img/emot12.jpg" alt="" />
       </div>
       <div class="w-3/4">
+        <div class="my-8 bg-sky-900 p-4">
+          <ul class="flex flex-col items-center">
+            <li><a href="https://github.com/QuimCrous">Github</a></li>
+            <li><a href="https://cv-jcm.vercel.app">PortFolio web</a></li>
+            <li>
+              <a href="https://www.linkedin.com/in/joaquim-crous-mayné/"
+                >LinkedIn</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="my-8 bg-sky-900 p-4">
+          Blog administrado y creado con 💖 por Quim_Dev
+        </div>
         <p class="my-8 bg-sky-900 p-4">
-          Blog administrado y creado por Joaquim Crous Mayné
+          Ilustraciones creadas por OMouro
+          <a href="http://">Instagram emoji xD</a>
         </p>
         <p class="my-8 bg-sky-900 p-4">
           Correo electrónico: joaquimcrous@gmail.com
