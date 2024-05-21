@@ -27,9 +27,11 @@ import Footer from "../components/Footer.vue";
         <div class="my-8 bg-sky-900 p-4">
           Blog administrado y creado con 💖 por Quim_Dev
         </div>
-        <p class="my-8 bg-sky-900 p-4">
+        <p class="my-8 bg-sky-900 p-4 flex flex-row">
           Ilustraciones creadas por OMouro
-          <a href="http://">Instagram emoji xD</a>
+          <a href="https://www.instagram.com/0mouro/"
+            ><img class="w-8 mx-2" src="../../public/img/ing_icon.png" alt=""
+          /></a>
         </p>
         <p class="my-8 bg-sky-900 p-4">
           Correo electrónico: joaquimcrous@gmail.com
