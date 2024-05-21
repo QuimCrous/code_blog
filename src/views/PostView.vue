@@ -47,7 +47,7 @@
         <div v-else>lolololo</div>
         <div>
           <button
-            class="border-2 rounded-md py-5 px-5 border-sky-800 bg-sky-800 text-white mb-5"
+            class="border-2 rounded-md py-5 px-5 border-sky-800 bg-sky-800 text-white mb-5 disabled:opacity-50"
             @click="previousPage"
             :disabled="currentPage === 1"
           >
@@ -58,7 +58,7 @@
             >{{ currentPage }} / {{ totalPages }}</span
           >
           <button
-            class="border-2 rounded-md py-5 px-5 border-sky-800 bg-sky-800 text-white mb-5"
+            class="border-2 rounded-md py-5 px-5 border-sky-800 bg-sky-800 text-white mb-5 disabled:opacity-50"
             @click="nextPage"
             :disabled="currentPage === totalPages"
           >
