@@ -13,9 +13,9 @@
   <summary>Tabla de Contenidos</summary>
   <ol>
     <li>
-      <a href="#about-the-project">Sobre el proyecto</a>
+      <a href="#sobre-el-proyecto">Sobre el proyecto</a>
       <ul>
-        <li><a href="#build-with">Creado con</a></li>
+        <li><a href="#creado-con">Creado con</a></li>
       </ul>
     </li>
     <li>
@@ -64,5 +64,13 @@ Este contiene los siguientes apartados:
 - Editar Perfil (Profile Edit): Esta vista permite cambiar la imagen y el nombre del usuario.
 
 - Postear (Posting): Vista creada para el admin, que permite crear posts añadiendo el titulo, contenido, etiquetar y añadir imagenes desde una url.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+### Creado con
+
+Este proyecto lo he creado usando <a href="https://vuejs.org">VUE</a> framework (HTML, JS) junto con <a href="https://tailwindcss.com">Tailwind</a> (CSS) library. Utilizo estas librerías porque son con las que más fluidez tengo además de facilitarme la construcción de la web.
+
+Para la parte de la gestión de Backend he optado por utilizar <a href="https://supabase.com">Supabase</a> ya que me aporta de forma gratuita una opción super fácil para tener el proyecto en la red, y para la parte de frontend el proyecto esta alojado en <a href="https://vercel.com">Vercel</a>, que me permite visualizar perfectamente el estado final del proyecto.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
