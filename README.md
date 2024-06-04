@@ -19,24 +19,12 @@
       </ul>
     </li>
     <li>
-    <a href="#roadmap">Roadmap</a>
-     <ul>
-     <li><a href="#backlog">Back log</a></li>
-        <li><a href="#day-one">Tuesday 07, February 2023</a></li>
-        <li><a href="#day-two">Wednesday 08, February 2023</a></li>
-        <li><a href="#day-three">Thursday 09, February 2023</a></li>
-        <li><a href="#day-four">Friday 10, February 2023</a></li>
-        <li><a href="#day-five">Wednesday 15, February 2023</a></li>
-        <li><a href="#day-six">Thursday 16, February 2023</a></li>
-        <li><a href="#day-seven">Monday 20, February 2023</a></li>
-        <li><a href="#day-eight">Tuesday 21, February 2023</a></li>
-        <li><a href="#day-nine">Wednesday 22, February 2023</a></li>        
-      </ul>
+      <a href="#roadmap">Roadmap</a>
     </li>
-    <li><a href="#about">Mi información</a></li>
-    <li><a href="#special-thanks">Agradecimientos</a></li>
-    <li><a href="#technical-challenge">Desafío Técnico</a></li>
-    <li><a href="#big-mistake">Gran Error</a></li>
+    <li><a href="#sobre-mí">Sobre Mí</a></li>
+    <li><a href="#agradecimientos">Agradecimientos</a></li>
+    <li><a href="#desafío-técnico">Desafío Técnico</a></li>
+    <li><a href="#gran-error">Gran Error</a></li>
   </ol>
 </details>
 <hr>
@@ -72,5 +60,54 @@ Este contiene los siguientes apartados:
 Este proyecto lo he creado usando <a href="https://vuejs.org">VUE</a> framework (HTML, JS) junto con <a href="https://tailwindcss.com">Tailwind</a> (CSS) library. Utilizo estas librerías porque son con las que más fluidez tengo además de facilitarme la construcción de la web.
 
 Para la parte de la gestión de Backend he optado por utilizar <a href="https://supabase.com">Supabase</a> ya que me aporta de forma gratuita una opción super fácil para tener el proyecto en la red, y para la parte de frontend el proyecto esta alojado en <a href="https://vercel.com">Vercel</a>, que me permite visualizar perfectamente el estado final del proyecto.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## Roadmap
+
+Para este proyecto personal que he estado desarrollando por mi cuenta y para dar rienda suelta a mi creatividad no he seguido un roadmap como tal. Ha sido desarrollado en mis tiempos libres tanto para mejorar mis habilidades como para poder añadir contenido a mi biblioteca de proyectos personales.
+
+Empezé con crear el proyecto en VUE, hice la conexion con Supabase para tener un backend más rápidamente subido en la red y me puse a programar. Comencé con las views para registrarse, continuando con las views que muestran contenido y finalizando con la parte de About.
+
+Aunque ya está en una fase final seguiré mejorando este proyecto a medida que pase el tiempo, refinando el codigo como añadiendo contenido para dar vida a este proyecto.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## Sobre Mí
+
+Joaquim Crous - [@quim_dev](https://x.com/quim_dev) - joaquimcrous@gmail.com
+
+Project Link: [https://github.com/QuimCrous/code_blog](https://github.com/QuimCrous/code_blog)
+
+Presentation Link: [https://www.linkedin.com/in/joaquim-crous-mayné/](https://www.linkedin.com/in/joaquim-crous-mayné/)
+
+Portfolio Link: [https://cv-jcm.vercel.app](https://cv-jcm.vercel.app)
+
+#### Experiencia Académica
+
+- Backend Web Development Java - Ironhack Barcelona
+
+- Fronted Web Development - Iroonhack Barcelona
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## Agradecimientos
+
+- Quiero dar las gracias a todos los que me han acompañado en este proyecto, desde la gente de mi alrededor como a los profesionales que me han dado sus consejos para dar vida a este proyecto.
+- [Página de consulta](https://www.w3schools.com/js/default.asp)
+- [Página de ChatGPT](https://openai.com/blog/chatgpt/)
+- [Página de OMOURO studio (diseño de logos)](https://www.instagram.com/0mouro/)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## Desafío Técnico
+
+- Lo que considero como desafío técnico es el encontrarme a crear todo un proyecto por mi cuenta en los tiempos libres de los que dispongo. Desarrollar con un lenguaje que está en constante evolución dificulta en cierta medida el trabajo, ya que se tiene que tener en cuenta que ciertas cosas pasan a estar obsoletas mientras otras cambian la forma en la que se escriben. Aun así he disfrutado cada paso que he dado por pequeño que este sea.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## Gran Error
+
+- El gran error que he cometido es simple, creer que podría gestionar este proyecto por mi cuenta en menos tiempo del que me ha llevado. Al estar creado en mis momentos libres del trabajo dificultaba la continuidad de lo que estaba desarrollando, pero ha sido algo que he podido solucionar manteniendo una forma de trabajar de finalizar en cada momento la parte que estaba desarrollando.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
