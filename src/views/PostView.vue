@@ -44,7 +44,6 @@
             @delete-comment="deleteComment"
           />
         </div>
-        <div v-else>lolololo</div>
         <div>
           <button
             class="border-2 rounded-md py-5 px-5 border-sky-800 bg-sky-800 text-white mb-5 disabled:opacity-50"
@@ -119,7 +118,7 @@ async function getUser() {
     userId.value = userStore.profile.id;
     userProfile.value = userStore.profile.image_src;
   } catch (error) {
-    username.value = "";
+    username.value = "Invitado";
   }
 }
 

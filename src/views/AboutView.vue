@@ -37,15 +37,15 @@ import Footer from "../components/Footer.vue";
           Correo electrónico: joaquimcrous@gmail.com
         </p>
 
-        <p class="my-8 bg-sky-900 p-4">
-          Sobre mi: Desarrollador web de frontend y de backend. Me apasiona la
-          informática sobretodo la parte de escritura de código y de lógica.
-          Decidí enlazar mi pasión por todo lo relacionado con mis aficiones
-          frikis con el desarrollo de un blog, poniendo a prueba mis habilidades
-          para crear la web y poder dar alas a mi creatividad a la hora de crear
-          posts. Espero que si has llegado hasta aquí disfrutes de este blog y
-          comentes tu opinión ya que me interesa la interacción con los usuarios
-          para poder desarrollar mejor mis proyectos.
+        <p class="my-8 bg-sky-900 p-4 text-justify">
+          Sobre mi: Desarrollador web de fullstack. Me apasiona la informática
+          sobretodo la parte de escritura de código y de lógica. Decidí enlazar
+          mi pasión por todo lo relacionado con mis aficiones frikis con el
+          desarrollo de un blog, poniendo a prueba mis habilidades para crear la
+          web y poder dar alas a mi creatividad a la hora de crear posts. Espero
+          que si has llegado hasta aquí disfrutes de este blog y comentes tu
+          opinión ya que me interesa la interacción con los usuarios para poder
+          desarrollar mejor mis proyectos.
         </p>
       </div>
     </div>

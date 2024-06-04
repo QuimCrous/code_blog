@@ -30,9 +30,6 @@
         v-if="post.images"
       />
     </div>
-    <RouterLink :to="`/post/${post.id}`" @click.native="scrollToTop"
-      >Link al post</RouterLink
-    >
   </div>
 </template>
 
